@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https: data:; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; script-src 'self'; connect-src 'self' https://api.github.com">
+  <title>Smart Menu Pro</title>
+  <meta name="description" content="Solution de menu digital souveraine et illimitée">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="page-home">
+  <header class="hero">
+    <div class="container">
+      <h1>Smart Menu Pro</h1>
+      <p class="tagline">Votre menu digital, votre propriété, à vie.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Accéder à un menu</h2>
+      <p>Saisissez l'identifiant de votre établissement pour visualiser le menu :</p>
+      <form id="open-menu-form" class="form-inline">
+        <label for="uuid-input" class="sr-only">Identifiant du restaurant</label>
+        <input type="text" id="uuid-input" name="uuid" placeholder="UUID du restaurant" required pattern="[0-9a-fA-F\-]{36}" autocomplete="off">
+        <button type="submit" class="btn btn-primary">Ouvrir</button>
+      </form>
+      <p class="muted small" id="open-menu-error" role="alert" aria-live="polite"></p>
+    </section>
+
+    <section class="card">
+      <h2>Espace restaurateur</h2>
+      <ul class="link-list">
+        <li><a href="setup.html">Créer un nouveau restaurant</a></li>
+        <li><a href="admin.html">Console d'administration</a></li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Pourquoi Smart Menu Pro&nbsp;?</h2>
+      <ul>
+        <li><strong>Aucun abonnement&nbsp;:</strong> vous achetez une fois, vous possédez à vie.</li>
+        <li><strong>Hébergement gratuit&nbsp;:</strong> sur votre propre dépôt GitHub Pages.</li>
+        <li><strong>Modifications instantanées&nbsp;:</strong> prix, plats, allergènes en quelques clics.</li>
+        <li><strong>Indépendance totale&nbsp;:</strong> aucune plateforme tierce ne peut couper votre menu.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p class="muted small">Smart Menu Pro &middot; Solution souveraine de menu digital</p>
+  </footer>
+
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/home.js"></script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https: data:; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; script-src 'self'; connect-src 'self' https://api.github.com">
+  <title>Console admin - Smart Menu Pro</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="page-admin">
+  <header class="admin-header">
+    <div class="container">
+      <h1>Console d'administration</h1>
+      <span id="admin-status" class="status-pill" hidden></span>
+      <button id="logout-btn" class="btn btn-secondary btn-sm" hidden>Déconnexion</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="login-section" class="card">
+      <h2>Connexion</h2>
+      <form id="login-form" novalidate>
+        <div class="form-group">
+          <label for="login-uuid">UUID du restaurant</label>
+          <input type="text" id="login-uuid" name="uuid" required pattern="[0-9a-fA-F\-]{36}" autocomplete="off">
+        </div>
+        <div class="form-group">
+          <label for="login-password">Mot de passe</label>
+          <input type="password" id="login-password" name="password" required autocomplete="current-password">
+        </div>
+        <button type="submit" class="btn btn-primary">Se connecter</button>
+        <p class="muted small" id="login-error" role="alert" aria-live="polite"></p>
+      </form>
+      <p class="hint">L'authentification est vérifiée localement&nbsp;: ni votre mot de passe ni votre token n'est envoyé à un serveur tiers.</p>
+    </section>
+
+    <section id="github-section" class="card" hidden>
+      <h2>Configuration GitHub</h2>
+      <p>Pour publier les modifications, fournissez un <strong>Personal Access Token</strong> à scope minimal (Contents&nbsp;: Read & Write) sur le dépôt qui héberge vos données.</p>
+      <form id="github-form" novalidate>
+        <div class="form-group">
+          <label for="github-repo">Dépôt (format <code>utilisateur/dépôt</code>)</label>
+          <input type="text" id="github-repo" name="repo" required pattern="[^/]+/[^/]+" placeholder="ex: monnom/smart-menu">
+        </div>
+        <div class="form-group">
+          <label for="github-branch">Branche</label>
+          <input type="text" id="github-branch" name="branch" value="main" required>
+        </div>
+        <div class="form-group">
+          <label for="github-pat">Personal Access Token (fine-grained)</label>
+          <input type="password" id="github-pat" name="pat" required autocomplete="off">
+          <p class="hint">Sera chiffré localement avec votre mot de passe (AES-GCM). Jamais stocké en clair.</p>
+        </div>
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+        <p class="muted small" id="github-status" role="alert" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section id="editor-section" class="card" hidden>
+      <h2>Édition du menu</h2>
+      <div class="admin-tabs" role="tablist">
+        <button class="tab-btn active" data-tab="info" role="tab">Restaurant</button>
+        <button class="tab-btn" data-tab="categories" role="tab">Catégories &amp; plats</button>
+        <button class="tab-btn" data-tab="theme" role="tab">Thème visuel</button>
+      </div>
+
+      <div id="tab-info" class="tab-panel active" role="tabpanel">
+        <div class="form-group">
+          <label for="info-name">Nom</label>
+          <input type="text" id="info-name" maxlength="100">
+        </div>
+        <div class="form-group">
+          <label for="info-description">Description</label>
+          <input type="text" id="info-description" maxlength="200">
+        </div>
+        <div class="form-group">
+          <label for="info-logo">URL du logo</label>
+          <input type="url" id="info-logo">
+        </div>
+        <div class="form-group">
+          <label for="info-address">Adresse</label>
+          <input type="text" id="info-address">
+        </div>
+        <div class="form-group">
+          <label for="info-phone">Téléphone</label>
+          <input type="tel" id="info-phone">
+        </div>
+      </div>
+
+      <div id="tab-categories" class="tab-panel" role="tabpanel">
+        <div id="categories-editor"></div>
+        <button type="button" id="add-category-btn" class="btn btn-secondary">+ Ajouter une catégorie</button>
+      </div>
+
+      <div id="tab-theme" class="tab-panel" role="tabpanel">
+        <div class="form-group">
+          <label for="theme-primary">Couleur principale</label>
+          <input type="color" id="theme-primary">
+        </div>
+        <div class="form-group">
+          <label for="theme-secondary">Couleur secondaire</label>
+          <input type="color" id="theme-secondary">
+        </div>
+        <div class="form-group">
+          <label for="theme-bg">Couleur de fond</label>
+          <input type="color" id="theme-bg">
+        </div>
+        <div class="form-group">
+          <label for="theme-text">Couleur du texte</label>
+          <input type="color" id="theme-text">
+        </div>
+        <div class="form-group">
+          <label for="theme-radius">Arrondi des boutons (px)</label>
+          <input type="number" id="theme-radius" min="0" max="50" step="1">
+        </div>
+        <div class="form-group">
+          <label for="theme-font-heading">Police des titres</label>
+          <input type="text" id="theme-font-heading" placeholder="ex: Playfair Display">
+        </div>
+        <div class="form-group">
+          <label for="theme-font-body">Police du texte</label>
+          <input type="text" id="theme-font-body" placeholder="ex: Inter">
+        </div>
+      </div>
+
+      <div class="actions-bar">
+        <button id="preview-btn" class="btn btn-secondary">Prévisualiser le menu</button>
+        <button id="publish-btn" class="btn btn-primary">Publier les modifications</button>
+        <p class="muted small" id="publish-status" role="alert" aria-live="polite"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p class="muted small"><a href="./">← Retour à l'accueil</a></p>
+  </footer>
+
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/crypto.js"></script>
+  <script src="assets/js/github.js"></script>
+  <script src="assets/js/admin.js"></script>
+</body>
+</html>

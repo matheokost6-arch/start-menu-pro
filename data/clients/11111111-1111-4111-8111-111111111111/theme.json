@@ -1,0 +1,13 @@
+{
+  "colors": {
+    "primary": "#27ae60",
+    "secondary": "#2c3e50",
+    "background": "#ffffff",
+    "text": "#1f2933"
+  },
+  "fonts": {
+    "heading": "Playfair Display",
+    "body": "Inter"
+  },
+  "borderRadius": 12
+}

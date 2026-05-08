@@ -1,0 +1,183 @@
+{
+  "restaurant": {
+    "name": "Le Bistrot des Démos",
+    "description": "Cuisine de saison et produits frais — exemple Smart Menu Pro",
+    "logo": "",
+    "address": "12 rue de la Démonstration, 75001 Paris",
+    "phone": "+33 1 23 45 67 89"
+  },
+  "categories": [
+    {
+      "id": "entrees",
+      "name": "Entrées",
+      "icon": "🥗",
+      "items": [
+        {
+          "id": "soupe-oignon",
+          "name": "Soupe à l'oignon gratinée",
+          "description": "Oignons caramélisés, bouillon maison, croûtons et comté affiné 18 mois",
+          "price": 9.5,
+          "image": "",
+          "stock": null,
+          "allergens": ["gluten", "lactose", "sulfites"],
+          "available": true,
+          "isChefSuggestion": true
+        },
+        {
+          "id": "salade-chevre",
+          "name": "Salade de chèvre chaud",
+          "description": "Mesclun, chèvre du Poitou, miel de châtaignier, noix",
+          "price": 11.0,
+          "image": "",
+          "stock": null,
+          "allergens": ["lactose", "fruits-coque", "gluten"],
+          "available": true,
+          "isChefSuggestion": false
+        },
+        {
+          "id": "carpaccio-saint-jacques",
+          "name": "Carpaccio de Saint-Jacques",
+          "description": "Saint-Jacques de la baie de Saint-Brieuc, huile de truffe, fleur de sel",
+          "price": 16.5,
+          "image": "",
+          "stock": 4,
+          "allergens": ["mollusques"],
+          "available": true,
+          "isChefSuggestion": true
+        }
+      ]
+    },
+    {
+      "id": "plats",
+      "name": "Plats",
+      "icon": "🍽️",
+      "items": [
+        {
+          "id": "boeuf-bourguignon",
+          "name": "Bœuf bourguignon",
+          "description": "Mijoté 6h au vin de Bourgogne, lardons, champignons, purée maison",
+          "price": 22.0,
+          "image": "",
+          "stock": null,
+          "allergens": ["gluten", "sulfites", "celeri"],
+          "available": true,
+          "isChefSuggestion": false
+        },
+        {
+          "id": "risotto-cepes",
+          "name": "Risotto aux cèpes",
+          "description": "Riz Carnaroli, cèpes frais, parmesan 24 mois, huile de truffe blanche",
+          "price": 19.5,
+          "image": "",
+          "stock": null,
+          "allergens": ["lactose", "sulfites"],
+          "available": true,
+          "isChefSuggestion": true
+        },
+        {
+          "id": "saumon-mi-cuit",
+          "name": "Saumon mi-cuit, légumes croquants",
+          "description": "Filet de saumon écossais, poireaux, fenouil, beurre citronné",
+          "price": 24.0,
+          "image": "",
+          "stock": 6,
+          "allergens": ["poisson", "lactose"],
+          "available": true,
+          "isChefSuggestion": false
+        },
+        {
+          "id": "burger-maison",
+          "name": "Burger maison",
+          "description": "Bœuf charolais 180g, tomme, oignons confits, frites maison",
+          "price": 17.5,
+          "image": "",
+          "stock": null,
+          "allergens": ["gluten", "lactose", "oeuf", "moutarde", "sesame"],
+          "available": false,
+          "isChefSuggestion": false
+        }
+      ]
+    },
+    {
+      "id": "desserts",
+      "name": "Desserts",
+      "icon": "🍰",
+      "items": [
+        {
+          "id": "creme-brulee",
+          "name": "Crème brûlée à la vanille",
+          "description": "Vanille de Madagascar, sucre roux caramélisé minute",
+          "price": 8.0,
+          "image": "",
+          "stock": null,
+          "allergens": ["lactose", "oeuf"],
+          "available": true,
+          "isChefSuggestion": false
+        },
+        {
+          "id": "fondant-chocolat",
+          "name": "Fondant au chocolat noir",
+          "description": "Chocolat 70%, cœur coulant, glace vanille bourbon",
+          "price": 9.5,
+          "image": "",
+          "stock": null,
+          "allergens": ["lactose", "oeuf", "gluten", "soja"],
+          "available": true,
+          "isChefSuggestion": true
+        },
+        {
+          "id": "salade-fruits",
+          "name": "Salade de fruits frais",
+          "description": "Fruits de saison, sirop léger à la menthe",
+          "price": 7.0,
+          "image": "",
+          "stock": null,
+          "allergens": [],
+          "available": true,
+          "isChefSuggestion": false
+        }
+      ]
+    },
+    {
+      "id": "boissons",
+      "name": "Boissons",
+      "icon": "🍷",
+      "items": [
+        {
+          "id": "verre-vin-rouge",
+          "name": "Verre de vin rouge (Bourgogne)",
+          "description": "Pinot noir, 15 cl",
+          "price": 6.5,
+          "image": "",
+          "stock": null,
+          "allergens": ["sulfites"],
+          "available": true,
+          "isChefSuggestion": false
+        },
+        {
+          "id": "biere-pression",
+          "name": "Bière pression",
+          "description": "Blonde artisanale, 25 cl",
+          "price": 5.0,
+          "image": "",
+          "stock": null,
+          "allergens": ["gluten"],
+          "available": true,
+          "isChefSuggestion": false
+        },
+        {
+          "id": "limonade",
+          "name": "Limonade maison",
+          "description": "Citron pressé, sirop de canne, eau pétillante",
+          "price": 4.5,
+          "image": "",
+          "stock": null,
+          "allergens": [],
+          "available": true,
+          "isChefSuggestion": false
+        }
+      ]
+    }
+  ],
+  "lastUpdated": "2026-05-08T10:00:00.000Z"
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https: data:; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; script-src 'self'; connect-src 'self'">
+  <title>Menu - Smart Menu Pro</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link id="dynamic-theme" rel="stylesheet" href="">
+</head>
+<body class="page-menu">
+  <div id="loader" class="loader" role="status" aria-live="polite">
+    <p>Chargement du menu...</p>
+  </div>
+
+  <div id="menu-app" hidden>
+    <header class="menu-header">
+      <div class="container">
+        <img id="restaurant-logo" alt="" class="restaurant-logo" hidden>
+        <h1 id="restaurant-name"></h1>
+        <p id="restaurant-description" class="muted"></p>
+      </div>
+    </header>
+
+    <nav class="menu-filters container" aria-label="Filtres">
+      <div class="filter-group">
+        <label class="filter-chip">
+          <input type="checkbox" id="filter-chef-only">
+          <span>⭐ Suggestions du chef</span>
+        </label>
+      </div>
+
+      <fieldset class="filter-group">
+        <legend class="filter-label">Sans :</legend>
+        <div id="allergen-filters" class="filter-chips"></div>
+      </fieldset>
+    </nav>
+
+    <main id="menu-categories" class="container"></main>
+
+    <footer class="menu-footer container">
+      <p id="restaurant-contact" class="muted small"></p>
+      <p class="muted small">Dernière mise à jour : <time id="last-updated"></time></p>
+    </footer>
+  </div>
+
+  <div id="error-state" class="error-container" hidden>
+    <h2>Menu indisponible</h2>
+    <p id="error-message"></p>
+    <a href="./" class="btn btn-primary">Retour à l'accueil</a>
+  </div>
+
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/menu.js"></script>
+</body>
+</html>

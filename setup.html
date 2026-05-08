@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https: data:; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; script-src 'self'; connect-src 'self'">
+  <title>Création d'un restaurant - Smart Menu Pro</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="page-setup">
+  <header class="hero">
+    <div class="container">
+      <h1>Créer un nouveau restaurant</h1>
+      <p class="tagline">Génère un dossier client prêt à déployer.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Étape 1 — Informations</h2>
+      <form id="setup-form" novalidate>
+        <div class="form-group">
+          <label for="setup-name">Nom du restaurant</label>
+          <input type="text" id="setup-name" name="name" required maxlength="100">
+        </div>
+
+        <div class="form-group">
+          <label for="setup-description">Description courte</label>
+          <input type="text" id="setup-description" name="description" maxlength="200">
+        </div>
+
+        <div class="form-group">
+          <label for="setup-password">Mot de passe administrateur</label>
+          <input type="password" id="setup-password" name="password" required minlength="12" autocomplete="new-password">
+          <p class="hint">Minimum 12 caractères. Conservez-le en lieu sûr&nbsp;: il ne peut pas être récupéré.</p>
+        </div>
+
+        <div class="form-group">
+          <label for="setup-password-confirm">Confirmation du mot de passe</label>
+          <input type="password" id="setup-password-confirm" name="passwordConfirm" required minlength="12" autocomplete="new-password">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Générer le dossier client</button>
+        <p class="muted small" id="setup-error" role="alert" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section id="setup-result" class="card" hidden>
+      <h2>Étape 2 — Dossier client généré</h2>
+      <p>Voici les fichiers à ajouter dans <code id="result-path"></code> de votre dépôt GitHub.</p>
+
+      <div class="form-group">
+        <label>Identifiant unique (UUID) :</label>
+        <output id="result-uuid" class="code-output"></output>
+        <button type="button" class="btn btn-secondary btn-sm" data-copy="result-uuid">Copier</button>
+      </div>
+
+      <details open>
+        <summary><strong>menu.json</strong> — données du menu</summary>
+        <pre><code id="result-menu" class="code-block"></code></pre>
+        <button type="button" class="btn btn-secondary btn-sm" data-copy="result-menu">Copier</button>
+        <a id="download-menu" class="btn btn-secondary btn-sm" download="menu.json">Télécharger</a>
+      </details>
+
+      <details open>
+        <summary><strong>theme.json</strong> — personnalisation visuelle</summary>
+        <pre><code id="result-theme" class="code-block"></code></pre>
+        <button type="button" class="btn btn-secondary btn-sm" data-copy="result-theme">Copier</button>
+        <a id="download-theme" class="btn btn-secondary btn-sm" download="theme.json">Télécharger</a>
+      </details>
+
+      <details open>
+        <summary><strong>auth.json</strong> — empreinte du mot de passe (publique mais inutilisable sans le mot de passe)</summary>
+        <pre><code id="result-auth" class="code-block"></code></pre>
+        <button type="button" class="btn btn-secondary btn-sm" data-copy="result-auth">Copier</button>
+        <a id="download-auth" class="btn btn-secondary btn-sm" download="auth.json">Télécharger</a>
+      </details>
+
+      <div class="info-box">
+        <h3>Prochaine étape</h3>
+        <ol>
+          <li>Créez le dossier <code id="next-path"></code> dans votre dépôt GitHub.</li>
+          <li>Ajoutez-y les trois fichiers ci-dessus.</li>
+          <li>Commit + push.</li>
+          <li>Le menu sera accessible à <code id="next-url"></code> dès que GitHub Pages aura déployé.</li>
+        </ol>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p class="muted small"><a href="./">← Retour à l'accueil</a></p>
+  </footer>
+
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/crypto.js"></script>
+  <script src="assets/js/setup.js"></script>
+</body>
+</html>
