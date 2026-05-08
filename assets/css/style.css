@@ -541,7 +541,170 @@ details summary {
 .actions-bar .btn { flex: 0; }
 .actions-bar p { margin: 0; flex: 1; }
 
+/* ===== Page d'accueil ===== */
+.hero-home {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color: white;
+  padding: var(--space-12) var(--space-4);
+  text-align: center;
+}
+.hero-home h1 {
+  color: white;
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  margin-bottom: var(--space-4);
+}
+.hero-home .tagline {
+  opacity: 0.95;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  max-width: 640px;
+  margin: 0 auto var(--space-8);
+}
+.hero-cta {
+  display: flex;
+  gap: var(--space-3);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.hero-cta .btn-primary {
+  background: white;
+  color: var(--color-primary);
+}
+.hero-cta .btn-primary:hover {
+  background: var(--color-surface);
+}
+.hero-cta .btn-secondary {
+  background: transparent;
+  color: white;
+  border-color: rgba(255, 255, 255, 0.5);
+}
+.hero-cta .btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.section {
+  padding: var(--space-12) 0;
+}
+.section-title {
+  text-align: center;
+  margin-bottom: var(--space-8);
+}
+.section-title h2 { margin-bottom: var(--space-2); }
+.section-title p {
+  color: var(--color-muted);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-6);
+}
+.feature-card {
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  text-align: center;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.feature-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+.feature-icon {
+  font-size: 2.5rem;
+  margin-bottom: var(--space-3);
+  display: block;
+}
+.feature-card h3 {
+  margin-bottom: var(--space-2);
+}
+.feature-card p {
+  color: var(--color-muted);
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-6);
+  counter-reset: step;
+}
+.step {
+  position: relative;
+  padding: var(--space-6) var(--space-4);
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  counter-increment: step;
+}
+.step::before {
+  content: counter(step);
+  position: absolute;
+  top: -1rem;
+  left: var(--space-4);
+  width: 2.25rem;
+  height: 2.25rem;
+  background: var(--color-primary);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.step h3 {
+  margin: var(--space-3) 0 var(--space-2);
+}
+.step p {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.95rem;
+}
+
+.access-section {
+  background: var(--color-surface);
+  padding: var(--space-12) 0;
+}
+.access-section .card {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.cta-section {
+  background: linear-gradient(135deg, var(--color-secondary), var(--color-primary));
+  color: white;
+  padding: var(--space-12) var(--space-4);
+  text-align: center;
+}
+.cta-section h2 { color: white; }
+.cta-section p {
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto var(--space-6);
+}
+.cta-section .btn-primary {
+  background: white;
+  color: var(--color-primary);
+}
+.cta-section .btn-primary:hover {
+  background: var(--color-surface);
+}
+.cta-section .btn-secondary {
+  background: transparent;
+  color: white;
+  border-color: rgba(255, 255, 255, 0.5);
+  margin-left: var(--space-2);
+}
+.cta-section .btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
 @media (max-width: 600px) {
   .hero { padding: var(--space-8) 0; }
+  .hero-home { padding: var(--space-8) var(--space-4); }
   .card { padding: var(--space-4); }
+  .section { padding: var(--space-8) 0; }
 }

@@ -4,47 +4,115 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https: data:; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; script-src 'self'; connect-src 'self' https://api.github.com">
-  <title>Smart Menu Pro</title>
-  <meta name="description" content="Solution de menu digital souveraine et illimitée">
+  <title>Smart Menu Pro — Votre menu digital, à vie</title>
+  <meta name="description" content="Solution de menu digital souveraine, sans abonnement et illimitée pour les restaurateurs.">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body class="page-home">
-  <header class="hero">
+
+  <header class="hero-home">
     <div class="container">
       <h1>Smart Menu Pro</h1>
-      <p class="tagline">Votre menu digital, votre propriété, à vie.</p>
+      <p class="tagline">Votre menu digital, votre propriété, à vie. Aucun abonnement, aucune limite, indépendance totale.</p>
+      <div class="hero-cta">
+        <a href="setup.html" class="btn btn-primary">Créer mon menu</a>
+        <a href="#acceder" class="btn btn-secondary">Accéder à un menu</a>
+      </div>
     </div>
   </header>
 
-  <main class="container">
-    <section class="card">
-      <h2>Accéder à un menu</h2>
-      <p>Saisissez l'identifiant de votre établissement pour visualiser le menu :</p>
-      <form id="open-menu-form" class="form-inline">
-        <label for="uuid-input" class="sr-only">Identifiant du restaurant</label>
-        <input type="text" id="uuid-input" name="uuid" placeholder="UUID du restaurant" required pattern="[0-9a-fA-F\-]{36}" autocomplete="off">
-        <button type="submit" class="btn btn-primary">Ouvrir</button>
-      </form>
-      <p class="muted small" id="open-menu-error" role="alert" aria-live="polite"></p>
+  <main>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Pourquoi Smart Menu Pro&nbsp;?</h2>
+          <p>Une solution simple, durable et 100&nbsp;% à votre service.</p>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card">
+            <span class="feature-icon" aria-hidden="true">💎</span>
+            <h3>Aucun abonnement</h3>
+            <p>Vous achetez une fois et possédez votre menu à vie, sans frais cachés.</p>
+          </div>
+          <div class="feature-card">
+            <span class="feature-icon" aria-hidden="true">⚡</span>
+            <h3>Modifications instantanées</h3>
+            <p>Changez prix, plats ou allergènes en quelques clics depuis votre console.</p>
+          </div>
+          <div class="feature-card">
+            <span class="feature-icon" aria-hidden="true">🔒</span>
+            <h3>Indépendance totale</h3>
+            <p>Aucune plateforme tierce ne peut couper ou bloquer votre menu.</p>
+          </div>
+          <div class="feature-card">
+            <span class="feature-icon" aria-hidden="true">🌱</span>
+            <h3>Hébergement gratuit</h3>
+            <p>Hébergé sur votre propre dépôt GitHub Pages, sans serveur à gérer.</p>
+          </div>
+          <div class="feature-card">
+            <span class="feature-icon" aria-hidden="true">📱</span>
+            <h3>Optimisé mobile</h3>
+            <p>Vos clients accèdent au menu depuis n'importe quel téléphone via QR code.</p>
+          </div>
+          <div class="feature-card">
+            <span class="feature-icon" aria-hidden="true">🎨</span>
+            <h3>À vos couleurs</h3>
+            <p>Personnalisez le thème, les couleurs et le logo de votre établissement.</p>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section class="card">
-      <h2>Espace restaurateur</h2>
-      <ul class="link-list">
-        <li><a href="setup.html">Créer un nouveau restaurant</a></li>
-        <li><a href="admin.html">Console d'administration</a></li>
-      </ul>
+    <section class="section" style="background: var(--color-surface);">
+      <div class="container">
+        <div class="section-title">
+          <h2>Comment ça marche&nbsp;?</h2>
+          <p>Trois étapes pour avoir votre menu en ligne.</p>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <h3>Créez votre restaurant</h3>
+            <p>Renseignez le nom et les informations de votre établissement en quelques minutes.</p>
+          </div>
+          <div class="step">
+            <h3>Composez votre menu</h3>
+            <p>Ajoutez vos catégories, plats, prix, photos et allergènes depuis la console d'administration.</p>
+          </div>
+          <div class="step">
+            <h3>Partagez le QR code</h3>
+            <p>Vos clients scannent et accèdent à votre menu, partout, à tout moment.</p>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section class="card">
-      <h2>Pourquoi Smart Menu Pro&nbsp;?</h2>
-      <ul>
-        <li><strong>Aucun abonnement&nbsp;:</strong> vous achetez une fois, vous possédez à vie.</li>
-        <li><strong>Hébergement gratuit&nbsp;:</strong> sur votre propre dépôt GitHub Pages.</li>
-        <li><strong>Modifications instantanées&nbsp;:</strong> prix, plats, allergènes en quelques clics.</li>
-        <li><strong>Indépendance totale&nbsp;:</strong> aucune plateforme tierce ne peut couper votre menu.</li>
-      </ul>
+    <section class="access-section" id="acceder">
+      <div class="container">
+        <div class="card">
+          <h2>Accéder à un menu</h2>
+          <p>Saisissez l'identifiant de votre établissement pour visualiser le menu :</p>
+          <form id="open-menu-form" class="form-inline">
+            <label for="uuid-input" class="sr-only">Identifiant du restaurant</label>
+            <input type="text" id="uuid-input" name="uuid" placeholder="UUID du restaurant" required pattern="[0-9a-fA-F\-]{36}" autocomplete="off">
+            <button type="submit" class="btn btn-primary">Ouvrir</button>
+          </form>
+          <p class="muted small" id="open-menu-error" role="alert" aria-live="polite"></p>
+        </div>
+      </div>
     </section>
+
+    <section class="cta-section">
+      <div class="container">
+        <h2>Prêt à lancer votre menu&nbsp;?</h2>
+        <p>Créez votre restaurant en quelques minutes ou accédez à votre console d'administration.</p>
+        <div>
+          <a href="setup.html" class="btn btn-primary">Créer un nouveau restaurant</a>
+          <a href="admin.html" class="btn btn-secondary">Console d'administration</a>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <footer class="site-footer">
