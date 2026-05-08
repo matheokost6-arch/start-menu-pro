@@ -702,6 +702,40 @@ details summary {
   background: rgba(255, 255, 255, 0.12);
 }
 
+/* Barre de progression création menu */
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  background: var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-top: var(--space-4);
+}
+.progress-fill {
+  width: 0%;
+  height: 100%;
+  background: var(--color-primary);
+  transition: width 0.4s ease;
+}
+
+/* Bloc QR code sur la page de succès */
+.qr-block {
+  margin-top: var(--space-6);
+  padding: var(--space-4);
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  text-align: center;
+}
+.qr-block img {
+  display: block;
+  margin: var(--space-4) auto;
+  max-width: 100%;
+  height: auto;
+  background: #fff;
+  padding: var(--space-2);
+  border-radius: var(--radius-sm);
+}
+
 @media (max-width: 600px) {
   .hero { padding: var(--space-8) 0; }
   .hero-home { padding: var(--space-8) var(--space-4); }

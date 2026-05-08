@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https: data:; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; script-src 'self'; connect-src 'self'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https: data:; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; script-src 'self'; connect-src 'self' https://api.github.com https://api.qrserver.com">
   <title>Création d'un restaurant - Smart Menu Pro</title>
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -16,8 +16,8 @@
   </header>
 
   <main class="container">
-    <section class="card">
-      <h2>Étape 1 — Informations</h2>
+    <section class="card" id="setup-form-section">
+      <h2>Informations sur votre restaurant</h2>
       <form id="setup-form" novalidate>
         <div class="form-group">
           <label for="setup-name">Nom du restaurant</label>
@@ -40,50 +40,37 @@
           <input type="password" id="setup-password-confirm" name="passwordConfirm" required minlength="12" autocomplete="new-password">
         </div>
 
-        <button type="submit" class="btn btn-primary">Générer le dossier client</button>
+        <button type="submit" class="btn btn-primary" id="setup-submit">Créer mon menu</button>
         <p class="muted small" id="setup-error" role="alert" aria-live="polite"></p>
       </form>
     </section>
 
-    <section id="setup-result" class="card" hidden>
-      <h2>Étape 2 — Dossier client généré</h2>
-      <p>Voici les fichiers à ajouter dans <code id="result-path"></code> de votre dépôt GitHub.</p>
+    <section id="setup-progress" class="card" hidden>
+      <h2>Création en cours…</h2>
+      <p id="progress-step" class="muted">Préparation…</p>
+      <div class="progress-bar"><div id="progress-fill" class="progress-fill"></div></div>
+    </section>
 
-      <div class="form-group">
-        <label>Identifiant unique (UUID) :</label>
-        <output id="result-uuid" class="code-output"></output>
-        <button type="button" class="btn btn-secondary btn-sm" data-copy="result-uuid">Copier</button>
-      </div>
+    <section id="setup-success" class="card" hidden>
+      <h2>🎉 Votre menu est créé&nbsp;!</h2>
+      <p>Votre restaurant <strong id="success-name"></strong> a été enregistré.</p>
+      <p class="muted small">Identifiant unique&nbsp;: <code id="success-uuid"></code></p>
+      <p>GitHub Pages va publier votre menu dans <strong>environ 1&nbsp;minute</strong>. Vous pouvez dès maintenant accéder à votre console&nbsp;:</p>
+      <p>
+        <a id="success-admin-link" class="btn btn-primary" href="#">Aller à ma console d'administration</a>
+      </p>
+      <p class="muted small">Lien public à partager avec vos clients (disponible dans 1&nbsp;min)&nbsp;:<br>
+        <code id="success-menu-url"></code>
+        <button type="button" class="btn btn-secondary btn-sm" data-copy="success-menu-url">Copier</button>
+      </p>
 
-      <details open>
-        <summary><strong>menu.json</strong> — données du menu</summary>
-        <pre><code id="result-menu" class="code-block"></code></pre>
-        <button type="button" class="btn btn-secondary btn-sm" data-copy="result-menu">Copier</button>
-        <a id="download-menu" class="btn btn-secondary btn-sm" download="menu.json">Télécharger</a>
-      </details>
-
-      <details open>
-        <summary><strong>theme.json</strong> — personnalisation visuelle</summary>
-        <pre><code id="result-theme" class="code-block"></code></pre>
-        <button type="button" class="btn btn-secondary btn-sm" data-copy="result-theme">Copier</button>
-        <a id="download-theme" class="btn btn-secondary btn-sm" download="theme.json">Télécharger</a>
-      </details>
-
-      <details open>
-        <summary><strong>auth.json</strong> — empreinte du mot de passe (publique mais inutilisable sans le mot de passe)</summary>
-        <pre><code id="result-auth" class="code-block"></code></pre>
-        <button type="button" class="btn btn-secondary btn-sm" data-copy="result-auth">Copier</button>
-        <a id="download-auth" class="btn btn-secondary btn-sm" download="auth.json">Télécharger</a>
-      </details>
-
-      <div class="info-box">
-        <h3>Prochaine étape</h3>
-        <ol>
-          <li>Créez le dossier <code id="next-path"></code> dans votre dépôt GitHub.</li>
-          <li>Ajoutez-y les trois fichiers ci-dessus.</li>
-          <li>Commit + push.</li>
-          <li>Le menu sera accessible à <code id="next-url"></code> dès que GitHub Pages aura déployé.</li>
-        </ol>
+      <div class="qr-block">
+        <h3>📱 QR code de votre menu</h3>
+        <p class="muted small">Imprimez-le et placez-le sur vos tables. Vos clients scanneront pour accéder au menu.</p>
+        <img id="success-qr" alt="QR code du menu" width="300" height="300">
+        <p>
+          <a id="success-qr-download" class="btn btn-secondary btn-sm" download="menu-qrcode.png">Télécharger le QR (PNG)</a>
+        </p>
       </div>
     </section>
   </main>
@@ -94,6 +81,8 @@
 
   <script src="assets/js/utils.js"></script>
   <script src="assets/js/crypto.js"></script>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/github.js"></script>
   <script src="assets/js/setup.js"></script>
 </body>
 </html>
